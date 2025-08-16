@@ -19,7 +19,6 @@ $(document).ready(function () {
     );
   });
 
-  // Signup form submission
   $("#signup-form").on("submit", function (e) {
     e.preventDefault();
 
@@ -37,7 +36,6 @@ $(document).ready(function () {
       return;
     }
 
-    // Signup AJAX
     $.ajax({
       url: "/cgi-bin/app.py?action=signup",
       method: "POST",
@@ -49,7 +47,6 @@ $(document).ready(function () {
             .css("color", "green")
             .text("Signup successful! Logging in...");
 
-          // Auto-login
           $.ajax({
             url: "/cgi-bin/app.py?action=login",
             method: "POST",
@@ -226,12 +223,12 @@ $(document).ready(function () {
 
   $(document).on("click", ".delete-btn", function () {
     deleteItemId = $(this).data("id");
-    $("#deleteModal").addClass("show"); // use class, not .show()
+    $("#deleteModal").addClass("show");
   });
 
   $("#cancelDelete").on("click", function () {
     deleteItemId = null;
-    $("#deleteModal").removeClass("show"); // hide modal
+    $("#deleteModal").removeClass("show");
   });
 
   $("#confirmDelete").on("click", function () {
@@ -240,8 +237,8 @@ $(document).ready(function () {
     $.ajax({
       url: "/cgi-bin/app.py?action=delete",
       method: "POST",
-      data: { id: deleteItemId }, // form encoded
-      dataType: "json", // expect JSON
+      data: { id: deleteItemId },
+      dataType: "json",
       success: function (res) {
         if (res.success) {
           console.log("Delete success:", res);

@@ -1,14 +1,12 @@
-# cgi-bin/init_db.py
 import sqlite3
 import os
 
 DB_PATH = os.path.join(os.path.dirname(__file__), "app.db")
 
 def init_db():
-    conn = sqlite3.connect(DB_PATH)  # path to your DB
+    conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
 
-    # Create users table
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -17,7 +15,6 @@ def init_db():
         )
     """)
 
-    # Create items table
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS items (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
