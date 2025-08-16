@@ -1,3 +1,27 @@
 cgi-bin/__pycache__
 cgi-bin/sessions
+cgi-bin/app.db# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+.env
+
+# Logs
+*.log
+
+# SQLite database
 cgi-bin/app.db
+
+# Sessions
+cgi-bin/sessions/
+
+# Python cache in cgi-bin
+cgi-bin/__pycache__/
+
+# OS files
+.DS_Store
+Thumbs.db
