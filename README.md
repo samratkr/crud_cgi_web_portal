@@ -21,11 +21,13 @@ A simple Python CGI-based web application with user authentication, product mana
 ## Setup and Run Locally
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/samratkr/crud_cgi_web_portal.git
    cd crud_cgi_web_portal
 
    ```
+
 2. Create a virtual environment (optional but recommended):
    python -m venv venv
    source venv/bin/activate # Linux / macOS
@@ -42,3 +44,8 @@ A simple Python CGI-based web application with user authentication, product mana
    python -m http.server 8000 --cgi
 
    Then visit: http://localhost:8000/cgi-bin/app.py
+
+# if writable problem persist use
+
+chmod 775 /var/www/crud_cgi_web_portal/cgi-bin
+chmod 664 /var/www/crud_cgi_web_portal/cgi-bin/app.db
