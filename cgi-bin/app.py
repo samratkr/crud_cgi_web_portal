@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import os
 import cgi
 import cgitb
@@ -98,14 +99,13 @@ def handle_dashboard(session):
     render_template("dashboard.html")
 
 def handle_list(session):
-    session = load_session()
     if "user_id" not in session:
         render_json({"error": "Unauthorized"})
         return
     items = get_items(session["user_id"])
     items_list = [{"id": i[0], "name": i[1], "description": i[2], "price": float(i[3])} for i in items]
     render_json(items_list)
-
+    
 def handle_add(form, session):
     if "user_id" not in session:
         render_json({"error": "Unauthorized"})

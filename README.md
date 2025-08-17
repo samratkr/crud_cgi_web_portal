@@ -24,14 +24,16 @@ A simple Python CGI-based web application with user authentication, product mana
    ```bash
    git clone https://github.com/samratkr/crud_cgi_web_portal.git
    cd crud_cgi_web_portal
-   
+
+   ```
 2. Create a virtual environment (optional but recommended):
    python -m venv venv
-   source venv/bin/activate   # Linux / macOS
-   venv\Scripts\activate      # Windows
+   source venv/bin/activate # Linux / macOS
+   venv\Scripts\activate # Windows
 
 3. Initialize the database:
-   python -c "from db import get_db; conn = get_db(); conn.close()"
+   cd cgi-bin
+   python db.py
 
 4. Set up a CGI-compatible server and ensure cgi-bin/app.py is executable:
    chmod +x cgi-bin/app.py

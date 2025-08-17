@@ -1,8 +1,12 @@
+#!/usr/bin/python3
 import sqlite3
 import os
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DB_FILE = os.path.join(os.path.dirname(__file__), "app.db")
+DB_FILE = os.path.join(BASE_DIR, "app.db")
+
+os.makedirs(BASE_DIR, exist_ok=True)
+
 
 def get_db():
     conn = sqlite3.connect(DB_FILE)
@@ -17,23 +21,24 @@ def init_db():
         CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             username TEXT UNIQUE NOT NULL,
-            password_hash TEXT NOT NULL
+            password TEXT NOT NULL
         )
     """)
 
     cur.execute("""
         CREATE TABLE IF NOT EXISTS items (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            user_id INTEGER NOT NULL,
             name TEXT NOT NULL,
             description TEXT,
+            price REAL NOT NULL,
+            user_id INTEGER NOT NULL,
             FOREIGN KEY(user_id) REFERENCES users(id)
         )
     """)
 
     conn.commit()
     conn.close()
+    print("Database initialized successfully!")
 
 if __name__ == "__main__":
     init_db()
-    print("Database initialized.")
